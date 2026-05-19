@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c6ekg0m7obusa"]
+
+[ext_resource type="Script" uid="uid://c2o1v0a6amabh" path="res://player.gd" id="1_hqtel"]
+[ext_resource type="Texture2D" uid="uid://dvw1rv0ljeue3" path="res://TundralockeSpritess/PlayerSprite.png" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://52o8o6fircwx" path="res://TundralockeSpritess/Sh3perdWalking1.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://byr13xqrlb0jn" path="res://TundralockeSpritess/Sh3perdWalking2.png" id="3_sweqy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_i3pqv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hqtel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sweqy")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1jxqw"]
+radius = 5.0
+height = 20.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1888169401]
+texture_filter = 1
+script = ExtResource("1_hqtel")
+speed = 400
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=371867567]
+sprite_frames = SubResource("SpriteFrames_2hs0m")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1166503750]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_1jxqw")
+debug_color = Color(0.21225065, 0.41706076, 0.49594563, 0.41960785)
