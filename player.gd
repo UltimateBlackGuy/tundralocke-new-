@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	var dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * speed
 	move_and_slide()
-	
+	Heat -= 1
 	lastdir = dir
 	
 	if lastdir.x < 0:
@@ -33,3 +33,5 @@ func _process(delta: float) -> void:
 		Sprite.play("Walking")
 	else:
 		Sprite.play("Idle")
+	
+	
