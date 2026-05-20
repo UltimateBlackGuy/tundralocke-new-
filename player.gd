@@ -6,7 +6,6 @@ class_name Player
 @export var Heat: int
 
 @onready var Sprite = $AnimatedSprite2D
-@onready var IdleAnim = Sprite.animation
 var lastdir
 var WalkAnim = "Walking"
 #Fill this up when we actually have some of these guys
@@ -23,7 +22,14 @@ func _process(delta: float) -> void:
 	velocity = dir * speed
 	move_and_slide()
 	
-	#lastdir = dir
+	lastdir = dir
 	
-	#if lastdir.x < 0:
-		#Player.
+	if lastdir.x < 0:
+		Sprite.flip_h = true
+	elif lastdir.x > 0:
+		Sprite.flip_h = false
+	
+	if lastdir.x != 0 or lastdir.y != 0:
+		Sprite.play("Walking")
+	else:
+		Sprite.play("Idle")
