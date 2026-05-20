@@ -7,7 +7,7 @@ class_name Player
 
 @onready var Sprite = $AnimatedSprite2D
 @onready var IdleAnim = Sprite.animation
-
+var lastdir
 var WalkAnim = "Walking"
 #Fill this up when we actually have some of these guys
 var Alurians = []
@@ -23,4 +23,7 @@ func _process(delta: float) -> void:
 	velocity = dir * speed
 	move_and_slide()
 	
-	print(velocity)
+	#lastdir = dir
+	
+	#if lastdir.x < 0:
+		#Player.
