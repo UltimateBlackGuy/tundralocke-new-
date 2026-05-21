@@ -3,7 +3,7 @@ class_name Player
 
 @export var speed: int
 @export var health: int
-@export var Heat: int
+@export var Heat: float
 
 @onready var Sprite = $AnimatedSprite2D
 var lastdir
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	var dir = Input.get_vector("left", "right", "up", "down")
 	velocity = dir * speed
 	move_and_slide()
-	Heat -= 1
+	
 	lastdir = dir
 	
 	if lastdir.x < 0:
@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 	
 	if lastdir.x != 0 or lastdir.y != 0:
 		Sprite.play("Walking")
+		Heat = Heat - 0.1
 	else:
 		Sprite.play("Idle")
 	
