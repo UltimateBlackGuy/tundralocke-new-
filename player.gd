@@ -10,7 +10,7 @@ var lastdir
 var WalkAnim = "Walking"
 #Fill this up when we actually have some of these guys
 var Alurians = []
-
+var blast: PackedScene = load("res://blast.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -31,8 +31,15 @@ func _process(delta: float) -> void:
 	
 	if lastdir.x != 0 or lastdir.y != 0:
 		Sprite.play("Walking")
-		Heat = Heat - 0.1
 	else:
 		Sprite.play("Idle")
 	
+	if Input.is_action_just_pressed("Attack"):
+		if Heat != 0:
+			var newBlast = blast.instantiate()
+			newBlast.global_position = global_position
+			get_parent().add_child(newBlast)
+			
+			Heat -= newBlast.heatTaken
+		
 	

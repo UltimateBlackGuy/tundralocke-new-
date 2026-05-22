@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://o4ues8cl14tj"]
+
+[ext_resource type="Script" uid="uid://cwdo0y1hgydxg" path="res://blast.gd" id="1_l5868"]
+[ext_resource type="Texture2D" uid="uid://blfxkejtjallo" path="res://placeholderAttack.png" id="2_4nsg3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7jdf"]
+radius = 6.0
+height = 16.0
+
+[node name="Blast" type="Area2D" unique_id=1275208406]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_l5868")
+speed = 200
+damage = 5
+heatTaken = 10.0
+size = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1805626039]
+shape = SubResource("CapsuleShape2D_x7jdf")
+debug_color = Color(0.9229071, 0.25599745, 0.28358787, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1772641259]
+rotation = -1.5707964
+texture = ExtResource("2_4nsg3")
